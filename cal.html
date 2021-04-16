@@ -1,0 +1,163 @@
+<html>
+	<head>
+	<title>Calculator</title>
+	<style>
+	*{ 
+    margin:0;
+    padding:0;
+    border-sizing:border-box;
+    }
+	.centercalcy{
+	height:100vh;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	}
+	form{
+	   width:500px;
+	   height:520px;
+	 }
+	#app-name{
+	   
+	   width:inherit;
+	   font-size:1.5rem;
+	   padding:2px 0 2px 10px;
+	   background-color:gray;
+	   color:white;
+	   border:none;
+	   outline:none;
+	}
+	#display-answer{
+		width:inherit;
+		height:150px;
+		background-color:#303030;
+		font-size:2rem;
+		color:white;
+		text-align:right;
+		outline:none;
+		border:none;
+	}
+	.layer1{
+		width:inherit;
+		height:90px;
+		display:flex;
+		justify-content:center;
+	}
+	.layer2{
+		width:inherit;
+		height:30px;
+		display:flex;
+		justify-content:center;
+	}
+	input{
+		flex:1;
+		font-size:1.4rem;
+		color:white;
+		border:1px solid #504f4f;
+		outline:none;
+	}
+	.main-num{
+		background-color:#101011;
+		color:white;
+	}
+	.oper{
+		background-color:#303030;
+	}
+	#clear{
+		font-size:1rem;
+	}
+	input:hover{
+		background-color:#474747;
+		border:1px solid grey
+	}
+</style>
+      <script>
+	function calculate(calc) {
+              
+            /* Check if function include ! character then
+            calculate factorial of number */
+            if(calci.answers.value.includes("!")) {
+                  
+                size = calci.answers.value.length;
+                n = Number(calci.answers.value.substring(0, size-1));
+                f = 1;
+                  
+                for(i = 2; i <= n; i++)
+                    f = f*i;
+                calci.answers.value = f;
+            }
+	   elif(calci.answers.value.includes("sqrt")){
+		size = calci.answers.value.length;
+		res=0;
+		n = Number(calci.answers.value.substring(0, size-1));
+		
+		  res=Math.sqrt(n);
+		calci.answers.value=res;
+	   }
+			else if(calci.answers.value.includes("log")){
+			    size = calci.answers.value.length;
+			    n = Number(calci.answers.value.substring(2, size-1));
+				calci.answers.value=n;
+			}
+            else    
+                /* Otherwise evalute and execute output */
+                calci.answers.value = eval(calci.answers.value);
+        }
+    </script>
+	</head>
+	<body>
+	<div class="centercalcy">
+	<form name="calci">
+	<input type="text" value="Calculator" id="app-name" readonly>
+	<input type="text" name="answers" id="display-answer">
+	<div class="layer2">
+		<input type="button" value="C" class="oper" id="clear" onclick="calci.answers.value=''">
+		<input type="button" value="=" class="oper" onclick="calculate(this.form)">
+	</div>
+	<div class="layer1">
+		<input type="button" class="oper" value="log" onclick="calci.answers.value+='log'">
+		<input type="button" class="oper" value="pi" onclick="calci.answers.value+='pi'">
+		<input type="button" class="oper" value="(" onclick="calci.answers.value+=')'">
+		<input type="button" class="oper" value=")" onclick="calci.answers.value+=')'">
+		<input type="button" class="oper" value="bspace" onclick="calci.answers.value+='bspace'">
+	</div>
+	<div class="layer1">
+		<input type="button" class="oper" value="sqrt" onclick="calci.answers.value+='sqrt'">
+		<input type="button" class="oper" value="1/x" onclick="calci.answers.value+='1/x'">
+		<input type="button" class="oper" value="|x|" onclick="calci.answers.value+='|x|'">
+		<input type="button" class="oper" value="exp" onclick="calci.answers.value+='exp'">
+		<input type="button" class="oper" value="mod" onclick="calci.answers.value+='mod'">
+	</div>
+	<div class="layer1">
+		<input type="button" class="oper" value="x^y" onclick="calci.answers.value+='^'">
+		<input type="button" class="main-num" value="7" onclick="calci.answers.value+='7'">
+		<input type="button" class="main-num" value="8" onclick="calci.answers.value+='8'">
+		<input type="button" class="main-num" value="9" onclick="calci.answers.value+='9'">
+		<input type="button" class="oper" value="*" onclick="calci.answers.value+='*'">
+	</div>
+	<div class="layer1">
+		<input type="button" class="oper" value="10^x" onclick="calci.answers.value+='10^x'">
+		<input type="button" class="main-num" value="4" onclick="calci.answers.value+='4'">
+		<input type="button" class="main-num" value="5" onclick="calci.answers.value+='5'">
+		<input type="button" class="main-num" value="6" onclick="calci.answers.value+='6'">
+		<input type="button" class="oper" value="-" onclick="calci.answers.value+='-'">
+	</div>
+	<div class="layer1">
+		<input type="button" class="oper" value="ln" onclick="calci.answers.value+='ln'">
+		<input type="button" class="main-num" value="1" onclick="calci.answers.value+='1'">
+		<input type="button" class="main-num" value="2" onclick="calci.answers.value+='2'">
+		<input type="button" class="main-num" value="3" onclick="calci.answers.value+='3'">
+		<input type="button" class="oper" value="+" onclick="calci.answers.value+='+'">
+	</div>
+	<div class="layer1">
+		<input type="button" class="oper" value="n!" onclick="calci.answers.value+='!'">
+		<input type="button" class="oper" value="." onclick="calci.answers.value+='.'">
+		<input type="button" class="main-num" value="0" onclick="calci.answers.value+='0'">
+		<input type="button" class="oper" value="%" onclick="calci.answers.value+='%'">
+		<input type="button" class="oper" value="/" onclick="calci.answers.value+='/'">
+	</div>
+	</form>
+   </div>
+</body>
+</html>
+	
